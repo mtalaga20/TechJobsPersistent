@@ -7,6 +7,31 @@
         <span></span>
     </div>
 
-    <input type="submit" value="Add Job" />
+    <divasp-controller ="Tag" class="dropdown">
+        <label>Employer</label>
+        <button class="dropbtn"></button>
+        <div class="dropdown-content">
+            @foreach (var employer in Model)
+            {
+                <a>@employer.Name</a>
+            }
+        </div>
+        <span></span>
+        </divasp-controller="Employer" asp-action="AddJob" asp-route-id="@Model.EmployerId">
+
+    <divasp-controller class="form-group">
+        <label>Skills</label>
+        @foreach (var skills in Model)
+        {
+            <a>@skills.Name</a>
+        }
+        <input class="checkbox" name="selectedSkills" values="@Skill.Id" />
+        <span></span>
+    </divasp-controller="Skills" asp-action="AddSkill" asp-route-id="@Model.SkillId">
+
+        
+
+        <input type="submit" value="Add Job" />
+
 </form>
 

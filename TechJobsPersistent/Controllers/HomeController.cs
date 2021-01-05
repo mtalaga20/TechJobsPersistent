@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using TechJobsPersistent.Models;
 using TechJobsPersistent.ViewModels;
 using TechJobsPersistent.Data;
+
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,13 +31,27 @@ namespace TechJobsPersistent.Controllers
         }
 
         [HttpGet("/Add")]
-        public IActionResult AddJob()
+        public IActionResult AddJob(string name, int employerId, List<SelectListItem> employers, List<SelectListItem> skills)
         {
-            return View();
+            //List<Job> c = context.Categories.ToList();
+            AddJobViewModel jobViewModel = new AddJobViewModel(name, employerId, employers, skills);
+            return View(jobViewModel);
         }
 
-        public IActionResult ProcessAddJobForm()
+        public IActionResult ProcessAddJobForm(AddJobViewModel jobViewModel,Array selectedSkills)
         {
+            
+            
+
+
+            int skillId = 0;
+            foreach(String skill in selectedSkills)
+            {
+                JobSkill newSkill = AddJobSkillViewModel();
+
+
+                skillId++;
+            }
             return View();
         }
 
